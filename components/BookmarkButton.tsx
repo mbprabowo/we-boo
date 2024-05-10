@@ -1,22 +1,22 @@
 "use client";
 
-import Image from "next/Image";
+import Image from "next/image";
 import { useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import bookmarkIcon from "@/assets/icons/bookmark.svg";
 import bookmarkIconSolidWhite from "@/assets/icons/bookmark-solid-white.svg";
 
-export default function BookmarkButton({ animeId }) {
+export default function BookmarkButton({ animeId }: { animeId: number }) {
   const [ currentBookmark ] = useState(
     localStorage.getItem("favorites")
-      ? JSON.parse(localStorage.getItem("favorites"))
+      ? JSON.parse(localStorage.getItem("favorites") || "{}")
       : []
   )
   const [ isBookmark, setIsBookmark ] = useState(currentBookmark.includes(animeId));
 
   const handleBookmark = () => {
     const mergedBookmark = isBookmark
-      ? currentBookmark.filter(dt => dt !== animeId)
+      ? currentBookmark.filter((dt: number) => dt !== animeId)
       : [ ...currentBookmark, animeId ];
 
     setIsBookmark(!isBookmark);
@@ -26,7 +26,7 @@ export default function BookmarkButton({ animeId }) {
   return (
     <div>
       <Button
-        variant={isBookmark ? "" : "secondary"}
+        variant={isBookmark ? "default" : "secondary"}
         onClick={() => handleBookmark()}
       >
         <span>{ isBookmark ? "Remove from List" : "Add to List" }</span>

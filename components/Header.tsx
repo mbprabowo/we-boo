@@ -1,4 +1,4 @@
-import Image from "next/Image";
+import Image from "next/image";
 import bookmarkIcon from "@/assets/icons/bookmark.svg";
 import { Button } from "@/components/ui/button";
 

@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { getAnimes } from "@/server/actions";
 import homeIcon from "@/assets/icons/home.svg";
 
-export default function Animes(response) {
+export default function Animes(response: any) {
   const searchParams = useSearchParams();
   const listOfAnimes = response.animes?.Page?.media;
   const [ animes, setAnimes ] = useState(listOfAnimes);
@@ -42,7 +42,7 @@ export default function Animes(response) {
       <div>
         <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {
-            animes.map(anime => (
+            animes.map((anime: any) => (
               <Link href={`/anime/${anime.id}`} key={anime.id}>
                 <Card className="p-4">
                   <CardTitle className="line-clamp-1">

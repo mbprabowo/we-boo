@@ -1,9 +1,9 @@
-import Image from "next/Image";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import homeIconLg from "@/assets/icons/home-lg.svg";
 import BookmarkButton from "@/components/BookmarkButton";
 
-export default function Anime({ anime }) { 
+export default function Anime({ anime }: { anime: any }) { 
 
   return (
     <div className="container">
@@ -47,8 +47,8 @@ export default function Anime({ anime }) {
                   { anime.Media.averageScore }%
                 </Badge>
                {
-                  anime.Media.genres.map(genre => (
-                    <Badge>
+                  anime.Media.genres.map((genre: string) => (
+                    <Badge key={genre}>
                       { genre }
                     </Badge>
                   ))

@@ -10,11 +10,11 @@ import FilterPlaceholder from "@/components/FilterPlaceholder";
 import { getAnimes } from "@/server/actions";
 
 export default function FavoritePage() {
-  const [ animes, setAnimes ] = useState();
+  const [ animes, setAnimes ] = useState({ genres: [], Page: { media: [] } });
   const [ isLoading, setIsLoading ] = useState(true);
   const [ ids ] = useState(
     typeof window !== "undefined" && window.localStorage.getItem("favorites")
-      ? JSON.parse(localStorage.getItem("favorites"))
+      ? JSON.parse(localStorage.getItem("favorites") || "{}")
       : []
   )
   const searchParams = useSearchParams(); 
@@ -35,7 +35,7 @@ export default function FavoritePage() {
   return (
     <main>
       {
-        animes && (
+        animes.Page.media.length > 0 && (
           <div>
             <Filter genres={animes.genres} />
             <Animes animes={animes}/>
@@ -43,7 +43,7 @@ export default function FavoritePage() {
         )
       }
       {
-        !animes && (
+        isLoading && (
           <div>
             <FilterPlaceholder />
             <AnimesPlaceholder />
