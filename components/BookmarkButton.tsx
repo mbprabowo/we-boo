@@ -8,7 +8,7 @@ import bookmarkIconSolidWhite from "@/assets/icons/bookmark-solid-white.svg";
 
 export default function BookmarkButton({ animeId }: { animeId: number }) {
   const [ currentBookmark ] = useState(
-    localStorage.getItem("favorites")
+    typeof window !== "undefined" && localStorage.getItem("favorites")
       ? JSON.parse(localStorage.getItem("favorites") || "{}")
       : []
   )

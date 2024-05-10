@@ -53,6 +53,7 @@ export const queryAnime: string = `
       }
       coverImage {
         large
+        color
       }
       bannerImage
       description

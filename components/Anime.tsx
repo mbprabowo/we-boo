@@ -3,13 +3,14 @@ import { Badge } from "@/components/ui/badge";
 import homeIconLg from "@/assets/icons/home-lg.svg";
 import BookmarkButton from "@/components/BookmarkButton";
 
-export default function Anime({ anime }: { anime: any }) { 
+export default function Anime({ anime }: { anime: any }) {
+  const backgroundColor: string = anime.Media.coverImage.color ? anime.Media.coverImage.color : "#f1a143";
 
   return (
     <div className="container">
       {
         anime.Media.bannerImage && (
-          <div className="relative w-full h-64">
+          <div className="relative w-full h-64 rounded-lg" style={{ backgroundColor: `${backgroundColor}`}}>
             <Image
               src={anime.Media.bannerImage}
               className="rounded-lg object-cover object-center"
@@ -29,7 +30,7 @@ export default function Anime({ anime }: { anime: any }) {
         </div>
         <div className="pt-4">
           <div className="flex gap-x-4">
-            <div className="hidden sm:block md:basis-1/4 basis-2/4 relative w-full h-80">
+            <div className="hidden sm:block md:basis-1/4 basis-2/4 relative w-full h-80 rounded-lg" style={{ backgroundColor: `${backgroundColor}`}}>
               <Image
                 src={anime.Media.coverImage.large}
                 className="rounded-lg object-cover object-center"

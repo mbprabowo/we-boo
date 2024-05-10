@@ -50,7 +50,7 @@ export default function Animes(response: any) {
                   </CardTitle>
                   <div className="flex gap-x-2 pt-4">
                     <CardContent className="basis-1/2 p-0">
-                      <div className="relative w-full h-48">
+                      <div className="relative w-full h-48" style={{ backgroundColor: `${anime.coverImage.color}`}}>
                         <Image
                           className="object-cover object-center"
                           src={anime.coverImage.large}
